@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package mines;
+
+service MinesGame {
+  rpc JoinGame (JoinRequest) returns (stream GameState);
+  rpc RevealCell (CellAction) returns (ActionResponse);
+  rpc FlagCell (CellAction) returns (ActionResponse);
+}
+
+message JoinRequest {
+  string playerName = 1;
+}
+
+message CellAction {
+  string playerId = 1;
+  int32 x = 2;
+  int32 y = 3;
+}
+
+message ActionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message Cell {
+  bool revealed = 1;
+  bool flagged = 2;
+  int32 adjacentMines = 3;
+  bool isMine = 4;
+}
+
+message Player {
+  string id = 1;
+  string name = 2;
+}
+
+message GameState {
+  repeated Cell cells = 1;
+  repeated Player players = 2;
+  int32 boardWidth = 3;
+  int32 boardHeight = 4;
+  string gameStatus = 5; // "active", "won", "lost"
+  string message = 6;
+  int32 minesRemaining = 7;
+}

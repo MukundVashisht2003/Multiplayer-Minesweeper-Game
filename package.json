@@ -1,0 +1,16 @@
+{
+  "name": "multiplayer-mines",
+  "version": "1.0.0",
+  "description": "Multiplayer Minesweeper Game using gRPC",
+  "main": "server.js",
+  "scripts": {
+    "start:server": "node server.js",
+    "start:client": "node client.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.0",
+    "@grpc/proto-loader": "^0.7.0",
+    "chalk": "^4.1.2",
+    "uuid": "^9.0.0"
+  }
+}
